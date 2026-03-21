@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Al hacer click va a la página de detalle
             card.querySelector('.titulo').addEventListener('click', () => {
-                window.location.href = `detail.html?id=${pelicula.id}`;
+                window.location.href = `detalle.html?id=${pelicula.id}`;
             });
 
             contenedor.appendChild(card);

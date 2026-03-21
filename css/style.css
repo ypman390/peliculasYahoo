@@ -71,3 +71,39 @@ header h1 {
 .titulo:hover {
     text-decoration: underline;
 }
+
+.btn-volver {
+    color: white;
+    text-decoration: none;
+    background-color: #e50914;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.btn-volver:hover {
+    background-color: #b00710;
+}
+
+.detalle-container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.detalle-container img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+.detalle-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detalle-info h2 {
+    font-size: 2rem;
+    color: #e50914;
+}

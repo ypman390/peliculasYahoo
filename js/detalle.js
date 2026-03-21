@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
-    // Obtenemos el id de la URL
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
@@ -23,8 +22,38 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <p><strong>⏱️ Duración:</strong> ${pelicula.runtime} minutos</p>
                 <p><strong>🎭 Géneros:</strong> ${pelicula.genres.map(g => g.name).join(', ')}</p>
                 <p><strong>📝 Sinopsis:</strong> ${pelicula.overview}</p>
+                <button class="btn-favorito" id="btn-fav">⭐ Añadir a favoritos</button>
+                <a href="favoritos.html" class="btn-volver">Ver mis favoritos</a>
             </div>
         </div>
     `;
+
+    // Comprobamos si ya está en favoritos
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    const yaEsta = favoritos.find(f => f.id === pelicula.id);
+    const btnFav = document.getElementById('btn-fav');
+
+    if (yaEsta) {
+        btnFav.textContent = '✅ Ya en favoritos';
+        btnFav.disabled = true;
+    }
+
+    // CREATE - Añadir a favoritos
+    btnFav.addEventListener('click', () => {
+        const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+        favoritos.push({
+            id: pelicula.id,
+            title: pelicula.title,
+            poster_path: pelicula.poster_path,
+            vote_average: pelicula.vote_average,
+            release_date: pelicula.release_date,
+            nota: ''
+        });
+
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+        btnFav.textContent = '✅ Ya en favoritos';
+        btnFav.disabled = true;
+    });
 
 });
